@@ -11,7 +11,7 @@
 #define bottom_Box_Size 180
 #define middle_Box_Size 120
 #define top_Box_Size 60
-#define snowflake_Size 100
+#define snowflake_Size 50
 
 int snowflakeX = 75 - (snowflake_Size / 2);
 int snowflakeY = (canvas_Height - 1) - (snowflake_Size / 2);
@@ -58,7 +58,6 @@ void display_CB()
     glVertex3i(bottomboxLeft, bottom_Box_Size, z_Plane);
     glVertex3i(bottomboxLeft, bottom_Box_Size, z_Plane);
     glVertex3i(bottomboxLeft, 1, z_Plane);
-    //glEnd();
 
     //Middle Box
     int middleBoxMid = middle_Box_Size / 2;
@@ -75,7 +74,6 @@ void display_CB()
     glVertex3i(middleBoxleft, middleBoxTop, z_Plane);
     glVertex3i(middleBoxleft, middleBoxTop, z_Plane);
     glVertex3i(middleBoxleft, middleBoxBottom, z_Plane);
-    //glEnd();
 
     //Top Box
     int topBoxMid = top_Box_Size / 2;
@@ -102,14 +100,7 @@ void display_CB()
 
 void keyboard_CB(unsigned char key, int x, int y)
 {
-    switch (key)
-    {
-    case ' ':
-        move = true;
-        break;
-    default:
-        break;
-    }
+    move = true;
 }
 
 void timer_CB(int id)
@@ -120,12 +111,11 @@ void timer_CB(int id)
     {
         if((snowflakeY - 21.65063509) + 1 < 0)
         {
-            snowflakeY = snowflakeY - 21.65063509;
+            snowflakeY = (snowflakeY - 21.65063509) + 1;
             return;
         }
         msec = 0;
         snowflakeY -= 4;
-        snowflake();
     }
 
     glutTimerFunc(1000/framerate, timer_CB, 0);

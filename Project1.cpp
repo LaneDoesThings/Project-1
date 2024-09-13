@@ -13,7 +13,8 @@
 #define top_Box_Size 60
 #define snowflake_Size 50
 
-int snowflakeX = 75 - (snowflake_Size / 2);
+int snowflake1X = ((snowflake_Size / 2) + 75);
+int snowflake2X = ((canvas_Width - 75) - (snowflake_Size / 2));
 int snowflakeY = (canvas_Height - 1) - (snowflake_Size / 2);
 float msec = 0;
 bool move = false;
@@ -23,16 +24,28 @@ void snowflake()
     glBegin(GL_LINES);
 
     //Horizontal Line
-    glVertex3i(snowflakeX - (snowflake_Size / 2), snowflakeY, z_Plane);
-    glVertex3i(snowflakeX + (snowflake_Size / 2), snowflakeY, z_Plane);
+    glVertex3i(snowflake1X - (snowflake_Size / 2), snowflakeY, z_Plane);
+    glVertex3i(snowflake1X + (snowflake_Size / 2), snowflakeY, z_Plane);
 
     //Diagonal Line 1
-    glVertex3i(snowflakeX - 12.5, snowflakeY + 21.65063509, z_Plane);
-    glVertex3i(snowflakeX + 12.5, snowflakeY - 21.65063509, z_Plane);
+    glVertex3i(snowflake1X - 12.5, snowflakeY + 21.65063509, z_Plane);
+    glVertex3i(snowflake1X + 12.5, snowflakeY - 21.65063509, z_Plane);
 
     //Diagonal Line 1
-    glVertex3i(snowflakeX + 12.5, snowflakeY + 21.65063509, z_Plane);
-    glVertex3i(snowflakeX - 12.5, snowflakeY - 21.65063509, z_Plane);
+    glVertex3i(snowflake1X + 12.5, snowflakeY + 21.65063509, z_Plane);
+    glVertex3i(snowflake1X - 12.5, snowflakeY - 21.65063509, z_Plane);
+
+    //Horizontal Line
+    glVertex3i(snowflake2X - (snowflake_Size / 2), snowflakeY, z_Plane);
+    glVertex3i(snowflake2X + (snowflake_Size / 2), snowflakeY, z_Plane);
+
+    //Diagonal Line 1
+    glVertex3i(snowflake2X - 12.5, snowflakeY + 21.65063509, z_Plane);
+    glVertex3i(snowflake2X + 12.5, snowflakeY - 21.65063509, z_Plane);
+
+    //Diagonal Line 1
+    glVertex3i(snowflake2X + 12.5, snowflakeY + 21.65063509, z_Plane);
+    glVertex3i(snowflake2X - 12.5, snowflakeY - 21.65063509, z_Plane);
 
 
     glEnd();
@@ -124,6 +137,8 @@ void timer_CB(int id)
 
 int main(int argc, char * argv[])
 {
+    std::cout << "Any key click will start" << std::endl;
+
     char canvas_Name[] = "Project 1 - Lane Wright";
     glutInit(&argc, argv);
     my_setup(canvas_Width, canvas_Height, canvas_Name);

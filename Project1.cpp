@@ -4,19 +4,22 @@ Graphics Pgm 1 for Lane Wright
 This Program will draw a "snowman" made from 3 boxes and 2 "snowflakes" drawn
 from intersecting lines.
 
+The "snowflake" moves downwards by a value of 4 every 20 miliseconds which allows
+for smooth motion of the "snowflake" while keeping the specified time requirements
+
 Events with callbacks are used to drive the program where an event handler is
 set up in main and the callback specified elsewhere. This allows for a modular
 design where only the events needed are set up which leads to better
 performance.
 
 The scene is also formed programatically meaning that the output can change by
-just changing the #defines
+just changing the #defines.
 */
 
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
-#include "Project1.h"
+#include "OpenGL445Setup-aug24.h"
 
 #define canvas_Width 600
 #define canvas_Height 600

@@ -13,10 +13,10 @@ The scene is also formed programatically meaning that the output can change by
 just changing the #defines
 */
 
-#include "Project1.h"
-#include <GL/freeglut.h>
 #include <GL/glew.h>
+#include <GL/freeglut.h>
 #include <iostream>
+#include "Project1.h"
 
 #define canvas_Width 600
 #define canvas_Height 600
